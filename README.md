@@ -38,11 +38,24 @@ cd bookstore
    ```sh
    npm install
    ```
-3. Start the backend server:  
+3. Importing Books Data to MongoDB:
+
+   The books data is stored in a JSON file named `Books.json` within the backend folder.
+   To run the project locally, you need to import this `Books.json` file into your own MongoDB database.
+   You can use MongoDB Compass or any other MongoDB tool to import the Books.json file.
+   After importing, you should use your own MongoDB connection URL.
+   
+5. Update MongoDB URL:
+
+   In the backend folder, open the index.js file.
+   Update the MongoDB connection URL with your own MongoDB URL where you imported the
+   Books.json data.
+   
+6. Start the backend server:  
    ```sh
    node index.js
    ```
-4. The backend will be running at `http://localhost:5000` (or your configured port).  
+7. The backend will be running at `http://localhost:3000` (or your configured port).  
 
 ## 📌 Features  
 
