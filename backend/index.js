@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 mongoose.set('debug', true);
-mongoose.connect("mongodb+srv://vimalsde:qpuOFlUbnkbwogja@cluster0.svuug.mongodb.net/users")
+mongoose.connect("Your mongoDB URL") //User's mongoDB URL
   .then(() => console.log("MongoDB Connected"))
 
 app.use('/books', BooksRouter);
