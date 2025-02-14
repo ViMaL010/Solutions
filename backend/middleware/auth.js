@@ -66,7 +66,7 @@ const login = async (req, res) => {
         const token = jwt.sign({ _id: user._id, isAdmin: user.isAdmin }, secretKey, { expiresIn: '1h' });
 
         // Send the token in Authorization header
-        res.header('Authorization', token).send({ token , user: user._id });
+        res.header('Authorization', token).send({ token , user: user._id, isAdmin: user.isAdmin });
     } catch (err) {
         res.status(400).send(err.message);
     }

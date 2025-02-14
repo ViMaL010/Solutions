@@ -5,11 +5,8 @@ const BooksRouter = express.Router();
 
 //get all books
 BooksRouter.get('/', async (req, res) => {  
-    const { page = 1, limit = 10 } = req.query;
     try {
     const books = await Book.find()
-        .limit(limit * 1)
-        .skip((page - 1) * limit);
     res.json(books);
     } catch (err) {
     res.status(500).json(
@@ -30,11 +27,11 @@ BooksRouter.get('/:Id', async (req,res) => {
 
 //add a book
 BooksRouter.post('/', authenticateToken ,async (req, res) => {
-    const { title, author, genre, description, coverImage, url , rating} = req.body;
+    const { title, author, genre, description, url , rating} = req.body;
     try {
-      const book = new Book({ title, author, genre, description, coverImage, url , rating});
+      const book = new Book({ title, author, genre, description, url , rating});
       await book.save();
-      res.status(201).json(book.Id);
+      res.status(201).json({bookId: book._id});
     } catch (err) {
       res.status(500).json({ error: err.message });
     }

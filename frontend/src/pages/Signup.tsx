@@ -1,116 +1,99 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const SignupPage: React.FC = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const SignupPage = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
-  const [error, setError] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-  const [nameError, setNameError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  // Email validation regex
-  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-
-  const handleRegister = async (e: React.FormEvent) => {
+  const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
-    setEmailError('');
-    setPasswordError('');
-    setNameError('');
-
-    // Basic validation
-    let valid = true;
-
-    if (!name) {
-      setNameError('Name is required.');
-      valid = false;
-    }
-
-    if (!email || !emailRegex.test(email)) {
-      setEmailError('Please enter a valid email.');
-      valid = false;
-    }
-
-    if (!password || password.length < 6) {
-      setPasswordError('Password must be at least 6 characters long.');
-      valid = false;
-    }
-
-    if (!valid) return;
+    setLoading(true);
+    setError(null);
 
     try {
-      const response = await axios.post('http://localhost:3000/auth/signup', { name, email, password, isAdmin });
-      localStorage.setItem('token', response.data.token); // Save token to local storage
-      // Redirect to login or homepage
-      navigate('/login');
+      const userData = {
+        email,
+        password,
+        isAdmin: isAdmin ? true : false, // Sending a boolean value
+      };
+
+      // API call to register user
+      const response = await axios.post("http://localhost:3000/auth/signup", userData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+        const { token, ...userDetails } = response.data;
+
+        // Save user details and JWT to localStorage
+        localStorage.setItem("user", JSON.stringify({ ...userDetails, token }));
+
+        alert(`Signup successful as ${isAdmin ? "Admin" : "User"}! Redirecting to login...`);
+        navigate("/login"); // Redirect to the login page after successful signup
     } catch (err: any) {
-      setError(err.response?.data?.message || 'An error occurred.');
+      setError(err.response?.data?.message || "An error occurred. Please try again later.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="bg-white p-8 rounded-md shadow-md w-full sm:w-96">
-        <h2 className="text-2xl font-semibold text-center mb-6">Register</h2>
-        {error && <div className="text-red-500 mb-4 text-center">{error}</div>}
-        <form onSubmit={handleRegister}>
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">Name</label>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Enter your name"
-              className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-            />
-            {nameError && <p className="text-red-500 text-xs mt-1">{nameError}</p>}
-          </div>
-
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">Email</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-            />
-            {emailError && <p className="text-red-500 text-xs mt-1">{emailError}</p>}
-          </div>
-
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your password"
-              className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-            />
-            {passwordError && <p className="text-red-500 text-xs mt-1">{passwordError}</p>}
-          </div>
-
-          <div className="mb-4 flex items-center">
+    <div className="flex justify-center items-center min-h-screen">
+      <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
+        <h2 className="text-2xl font-bold text-center mb-4">Sign Up</h2>
+        <form onSubmit={handleSignup}>
+          <input
+            type="email"
+            placeholder="Email"
+            className="w-full p-2 mb-3 border rounded"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            className="w-full p-2 mb-3 border rounded"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <div className="flex items-center mt-2">
             <input
               type="checkbox"
+              id="admin"
+              className="mr-2"
               checked={isAdmin}
               onChange={() => setIsAdmin(!isAdmin)}
-              className="mr-2"
             />
-            <label className="text-sm text-gray-700">Register as Admin</label>
+            <label htmlFor="admin" className="text-gray-700">Sign up as Admin</label>
           </div>
 
-          <button
-            type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          >
-            Register
-          </button>
+          {loading ? (
+            <button
+              type="button"
+              className="w-full bg-blue-600 text-white p-2 mt-4 rounded opacity-50 cursor-not-allowed"
+              disabled
+            >
+              Signing Up...
+            </button>
+          ) : (
+            <button className="w-full bg-blue-600 text-white p-2 mt-4 rounded">Sign Up</button>
+          )}
+
+          {error && <p className="mt-4 text-red-500 text-center">{error}</p>}
         </form>
+
+        <p className="mt-4 text-center">
+          Already have an account?{" "}
+          <Link to="/login" className="text-blue-600 hover:underline">Sign In</Link>
+        </p>
       </div>
     </div>
   );

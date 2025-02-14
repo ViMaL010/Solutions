@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 interface Book {
-  _id: string;
+  Id: string;
   title: string;
   author: string;
   genre: string;
@@ -59,22 +59,22 @@ const BooksList: React.FC = () => {
   return (
     <div>
       {/* Search and Filter Controls */}
-      <div className="flex gap-4 mb-6">
+      <div className="flex flex-wrap gap-4 mb-6">
         <input
           type="text"
           placeholder="Search by title or author"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 w-full sm:w-auto"
         />
 
         <select
           value={selectedGenre}
           onChange={(e) => setSelectedGenre(e.target.value)}
-          className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 w-full sm:w-auto"
         >
           <option value="">Select Genre</option>
-          <option value="sci-fi">Sci-fi</option>
+          <option value="Classic Literature">Classic Literature</option>
           <option value="fiction">Fiction</option>
           <option value="non-fiction">Non-fiction</option>
           {/* Add other genres as needed */}
@@ -83,7 +83,7 @@ const BooksList: React.FC = () => {
         <select
           value={selectedRating}
           onChange={(e) => setSelectedRating(e.target.value)}
-          className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 w-full sm:w-auto"
         >
           <option value="">Select Rating</option>
           <option value={5}>5 Stars</option>
@@ -125,11 +125,11 @@ const BooksList: React.FC = () => {
           </div>
 
           {/* Pagination Controls */}
-          <div className="flex justify-center gap-2 mt-6">
+          <div className="flex justify-center gap-2 mt-6 w-[60%] mx-auto">
             <button
               onClick={() => paginate(currentPage - 1)}
               disabled={currentPage === 1}
-              className="p-1 bg-blue-500 text-white rounded-md disabled:bg-gray-100"
+              className="bg-blue-500 text-white rounded-md disabled:bg-gray-100"
             >
               Previous
             </button>

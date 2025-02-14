@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [featuredBooks, setFeaturedBooks] = useState<any[]>([]); // Initialize as an empty array
@@ -13,19 +14,19 @@ const Home = () => {
       const response = await axios.get("http://localhost:3000/books", {
         params: {
           page: 1,
-          limit: 10, // You can adjust the limit as needed
+          limit: 20, // You can adjust the limit as needed
         },
       });
-  
+
       // Log the response to inspect its structure
       console.log(response.data); // Check if the response contains an array of books
-  
+
       // Now access the books array from the response
       const books = response.data;
-  
+
       // Filter the books with rating 5
       const booksWithFiveStars = books.filter((book: any) => book.rating === 5);
-  
+
       // Update the state with filtered books
       setFeaturedBooks(booksWithFiveStars);
     } catch (error) {
@@ -34,7 +35,6 @@ const Home = () => {
       setLoading(false);
     }
   };
-  
 
   useEffect(() => {
     fetchFeaturedBooks();
@@ -54,20 +54,22 @@ const Home = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {featuredBooks.length > 0 ? (
           featuredBooks.map((book) => (
-            <div key={book._id} className="bg-white p-4 rounded-lg shadow-lg">
-              <img
-                src={book.url}
-                alt={book.title}
-                className="w-full h-60 object-cover rounded-lg"
-              />
-              <h3 className="text-xl font-semibold mt-2">{book.title}</h3>
-              <p className="text-gray-700">{book.author}</p>
-              <p className="text-sm text-gray-600">{book.genre}</p>
-              <p className="mt-2 text-gray-800">{book.description}</p>
-              <div className="mt-2 text-yellow-500">
-                {"★".repeat(book.rating)}{"☆".repeat(5 - book.rating)}
+            <Link to={`/books/${book.Id}`} key={book.Id} className="hover:scale-105 hover:shadow-2xl hover:bg-gray-100 transition-transform transform">
+              <div className="bg-white p-4 rounded-lg shadow-lg">
+                <img
+                  src={book.url}
+                  alt={book.title}
+                  className="w-full h-60 object-cover rounded-lg"
+                />
+                <h3 className="text-xl font-semibold mt-2">{book.title}</h3>
+                <p className="text-gray-700">{book.author}</p>
+                <p className="text-sm text-gray-600">{book.genre}</p>
+                <p className="mt-2 text-gray-800">{book.description}</p>
+                <div className="mt-2 text-yellow-500">
+                  {"★".repeat(book.rating)}{"☆".repeat(5 - book.rating)}
+                </div>
               </div>
-            </div>
+            </Link>
           ))
         ) : (
           <div>No featured books with rating 5 found</div>

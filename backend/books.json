@@ -1,0 +1,155 @@
+[
+  {
+    "Id": 1,
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "genre": "Fiction",
+    "description": "A novel set in the American South during the 1930s, addressing themes of racial injustice and moral growth.",
+    "url": "https://m.media-amazon.com/images/I/81gepf1eMqL._SY522_.jpg",
+    "rating": 5
+  },
+  {
+    "Id": 2,
+    "title": "1984",
+    "author": "George Orwell",
+    "genre": "Science Fiction",
+    "description": "A dystopian novel set in a totalitarian society, depicting government surveillance and control.",
+    "url": "https://m.media-amazon.com/images/I/71yaRS4UL3L._AC_SX148_SY213_FMwebp_QL65_.jpg",
+    "rating": 4.7
+  },
+  {
+    "Id": 3,
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "genre": "Classic Literature",
+    "description": "A romantic novel exploring themes of love, reputation, and social class in 19th century England.",
+    "url": "https://m.media-amazon.com/images/I/81Y5vEXNcBL._AC_UY218_.jpg",
+    "rating": 4.3
+  },
+  {
+    "Id": 4,
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "genre": "Classic Literature",
+    "description": "A tragic story of love, wealth, and social status set in the 1920s.",
+    "url": "https://m.media-amazon.com/images/I/81ShirsP9zL._AC_SX148_SY213_FMwebp_QL65_.jpg",
+    "rating": 4.4
+  },
+  {
+    "Id": 5,
+    "title": "Moby-Dick",
+    "author": "Herman Melville",
+    "genre": "Adventure",
+    "description": "A whaling voyage becomes an obsession for revenge against a giant white whale.",
+    "url": "https://m.media-amazon.com/images/I/718i068zISL._AC_UF1000,1000_QL80_FMwebp_.jpg",
+    "rating": 4.1
+  },
+  {
+    "Id": 6,
+    "title": "War and Peace",
+    "author": "Leo Tolstoy",
+    "genre": "Historical Fiction",
+    "description": "A complex narrative depicting Russian society during the Napoleonic Wars.",
+    "url": "https://m.media-amazon.com/images/I/91HwBMSwRfL._AC_SX148_SY213_FMwebp_QL65_.jpg",
+    "rating": 4.6
+  },
+  {
+    "Id": 7,
+    "title": "The Catcher in the Rye",
+    "author": "J.D. Salinger",
+    "genre": "Fiction",
+    "description": "A story of teenage rebellion and alienation in mid-20th century America.",
+    "url": "https://m.media-amazon.com/images/I/8125BDk3l9L._AC_UF1000,1000_QL80_FMwebp_.jpg",
+    "rating": 4.2
+  },
+  {
+    "Id": 8,
+    "title": "Brave New World",
+    "author": "Aldous Huxley",
+    "genre": "Science Fiction",
+    "description": "A dystopian society focused on technological advancements and societal control.",
+    "url": "https://m.media-amazon.com/images/I/91D4YvdC0dL._AC_UF1000,1000_QL80_FMwebp_.jpg",
+    "rating": 4.3
+  },
+  {
+    "Id": 9,
+    "title": "Jane Eyre",
+    "author": "Charlotte Brontë",
+    "genre": "Romance",
+    "description": "A young woman's journey of self-discovery and independence.",
+    "url": "https://m.media-amazon.com/images/I/81pwJjgcwwL._AC_UF1000,1000_QL80_FMwebp_.jpg",
+    "rating": 4.5
+  },
+  {
+    "Id": 10,
+    "title": "Crime and Punishment",
+    "author": "Fyodor Dostoevsky",
+    "genre": "Psychological Fiction",
+    "description": "A psychological exploration of crime, guilt, and redemption.",
+    "url": "https://m.media-amazon.com/images/I/81bAXZAp-GL._AC_UF1000,1000_QL80_FMwebp_.jpg",
+    "rating": 4.6
+  },
+  {
+    "Id": 11,
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien",
+    "genre": "Fantasy",
+    "description": "A fantastical adventure of Bilbo Baggins, a hobbit, on a quest to reclaim treasure from a dragon.",
+    "url": "https://m.media-amazon.com/images/I/712cDO7d73L._AC_UF1000,1000_QL80_FMwebp_.jpg",
+    "rating": 5
+  },
+  {
+    "Id": 12,
+    "title": "Wuthering Heights",
+    "author": "Emily Brontë",
+    "genre": "Gothic Fiction",
+    "description": "A dark and passionate tale of love and revenge on the Yorkshire moors.",
+    "url": "https://m.media-amazon.com/images/I/61FKeQHZfXL._AC_UF1000,1000_QL80_FMwebp_.jpg",
+    "rating": 4.2
+  },
+  {
+    "Id": 13,
+    "title": "The Odyssey",
+    "author": "Homer",
+    "genre": "Epic Poetry",
+    "description": "An ancient Greek epic following Odysseus' long journey home after the Trojan War.",
+    "url": "https://m.media-amazon.com/images/I/71GRVFSo-hL._AC_UF1000,1000_QL80_FMwebp_.jpg",
+    "rating": 4.6
+  },
+  {
+    "Id": 14,
+    "title": "Les Misérables",
+    "author": "Victor Hugo",
+    "genre": "Historical Fiction",
+    "description": "A monumental novel exploring themes of justice, redemption, and revolution in 19th-century France.",
+    "url": "https://m.media-amazon.com/images/I/61j5Du0EzAL._AC_UF1000,1000_QL80_FMwebp_.jpg",
+    "rating": 4.7
+  },
+  {
+    "Id": 15,
+    "title": "Dracula",
+    "author": "Bram Stoker",
+    "genre": "Horror",
+    "description": "A gothic horror novel that introduced Count Dracula and the vampire legend.",
+    "url": "https://m.media-amazon.com/images/I/610PYeHzOuL._AC_UF1000,1000_QL80_FMwebp_.jpg",
+    "rating": 4.3
+  },
+  {
+    "Id": 16,
+    "title": "Frankenstein",
+    "author": "Mary Shelley",
+    "genre": "Science Fiction",
+    "description": "A cautionary tale about science, ambition, and the consequences of creating life.",
+    "url": "https://m.media-amazon.com/images/I/61rz7oL4cqL._AC_UF1000,1000_QL80_FMwebp_.jpg",
+    "rating": 4.4
+  },
+  {
+    "Id": 17,
+    "title": "The Divine Comedy",
+    "author": "Dante Alighieri",
+    "genre": "Epic Poetry",
+    "description": "A medieval epic exploring the afterlife through Inferno, Purgatorio, and Paradiso.",
+    "url": "https://m.media-amazon.com/images/I/91YRDOLJNGL._AC_UF1000,1000_QL80_FMwebp_.jpg",
+    "rating": 5
+  }
+]

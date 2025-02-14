@@ -10,9 +10,6 @@ const bookSchema = new mongoose.Schema({
   url: { type: String, required: true },
   rating: { type: Number, default: 0 },
 });
-bookSchema.virtual("coverImage").get(function () {
-  return this.url;
-});
 bookSchema.plugin(AutoIncrement, { inc_field: "Id" });
 
 module.exports = mongoose.model("Book", bookSchema);
